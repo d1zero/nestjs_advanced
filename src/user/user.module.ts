@@ -13,6 +13,7 @@ import { UserService } from './user.service';
     imports: [
         SequelizeModule.forFeature([User, Role, UserRoles]),
         RoleModule,
-    ]
+    ],
+    exports: [UserService]
 })
 export class UserModule { }

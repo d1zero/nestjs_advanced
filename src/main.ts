@@ -1,11 +1,13 @@
 import { NestFactory } from "@nestjs/core";
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger'
 import { AppModule } from "./app.module";
+import { ValidationPipe } from "./pipes/validation.pipe";
 
 const start = async () => {
     const PORT = process.env.PORT || 8000
     const app = await NestFactory.create(AppModule)
     app.setGlobalPrefix('api');
+    app.useGlobalPipes(new ValidationPipe())
 
     const swaggerConfig = new DocumentBuilder()
         .setTitle('Backend advanced')
